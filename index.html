@@ -158,16 +158,21 @@ const CONFIG = {
  colors:{bg:"#08080a",ink:"#ffffff",dim:"rgba(255,255,255,.55)",line:"rgba(255,255,255,.2)",glass:"rgba(255,255,255,.08)",accent:"#f3b73f","accent-soft":"rgba(243,183,63,.22)",bar:"#3c4ad6"},
  css:`.g777{display:block;font-family:"Barlow Condensed",sans-serif;font-style:italic;font-weight:800;font-size:38px;letter-spacing:-.01em;background:linear-gradient(180deg,#ffe49a,#eba72a 58%,#b87618);-webkit-background-clip:text;background-clip:text;color:transparent;border-bottom:2px solid #eba72a;padding:0 6px 1px 2px}
  .g777s{display:block;margin-top:3px;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:9px;letter-spacing:.24em;color:#f3b73f}
- .card-bar{text-transform:none;font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:700}`,
- hero:{bg:"bg.jpg",fallback:"radial-gradient(circle at 70% 20%,#3a3f8a,#12121e 45%,#08080a 85%)",eyebrow:"Cape Town CBD · Specialty coffee roastery",headline:"Reserve your seat"},
- nav:{layout:"left",burger:"square",menu:"drawer",side:"left",head:"Departures",foot:"66 Keerom Street · Cape Town CBD"},
+ .card-bar{text-transform:none;font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:700}
+ .b-pill{border-radius:14px;padding:0 18px 0 16px}.b-pill .bl{font-family:"Barlow Condensed",sans-serif;font-size:15px;font-weight:700;letter-spacing:.14em}
+ .mhead{align-self:stretch;display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:14px;background:var(--bar);color:#fff;font-family:"Barlow Condensed",sans-serif;font-size:20px;font-weight:700;letter-spacing:.08em;text-transform:none;margin-bottom:12px}
+ .m-drawer a:first-of-type small::before{content:"";display:inline-block;width:7px;height:7px;margin-right:8px;border-radius:50%;background:#58d68d;animation:blink 1.6s infinite}
+ @keyframes blink{50%{opacity:.25}}
+ .gt{display:block;margin-bottom:8px;color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.3em}`,
+ hero:{bg:"bg.jpg",fallback:"radial-gradient(circle at 70% 20%,#3a3f8a,#12121e 45%,#08080a 85%)",eyebrow:"Cape Town CBD &nbsp;✈&nbsp; Specialty coffee roastery",headline:"Reserve your seat"},
+ nav:{layout:"left",burger:"pill",label:"Gates",menu:"drawer",side:"left",head:'<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5L21 16Z"/></svg> Departures',foot:"66 Keerom Street · Cape Town CBD"},
  menu:[["Reserve","#top","B1"],["The roastery","#roastery","A2"],["Visit","#visit","C3"]],
  reserve:{header:"Boarding Gate B1",ticket:true,gate:"B1",open:420,close:1020,defaultTime:600,maxGuests:10,
   labels:{title:"Check in for coffee",cta:"Find a Seat",loading:"Checking the gate",slotsTitle:"Choose your departure",formTitle:"Passenger details",confirm:"Confirm boarding",okTitle:"You're cleared to board",passLabel:"BOARDING PASS",gateLabel:"GATE"}},
  sections:[
-  {id:"roastery",img:"s1.jpg",fallback:"linear-gradient(160deg,#4a3b2a,#0b0a09)",title:"AVIATION-THEMED COFFEE",text:"A specialty coffee shop and roastery in the Cape Town CBD, designed around the feeling of the departures hall."},
-  {img:"s2.jpg",fallback:"linear-gradient(160deg,#2f3578,#0b0b14)",title:"ROASTED AT THE SOURCE",text:"Coffee roasted by the team behind the counter, so what you drink is as fresh as it gets."},
-  {img:"s3.jpg",fallback:"linear-gradient(160deg,#6b4a1f,#0c0a07)",title:"BREWING AS AN EXPERIENCE",text:"Known for an experiential approach to brewing. Come early, stay for the second cup."}],
+  {id:"roastery",img:"s1.jpg",fallback:"linear-gradient(160deg,#4a3b2a,#0b0a09)",title:'<span class="gt">GATE A1</span>AVIATION-THEMED COFFEE',text:"A specialty coffee shop and roastery in the Cape Town CBD, designed around the feeling of the departures hall."},
+  {img:"s2.jpg",fallback:"linear-gradient(160deg,#2f3578,#0b0b14)",title:'<span class="gt">GATE A2</span>ROASTED AT THE SOURCE',text:"Coffee roasted by the team behind the counter, so what you drink is as fresh as it gets."},
+  {img:"s3.jpg",fallback:"linear-gradient(160deg,#6b4a1f,#0c0a07)",title:'<span class="gt">GATE A3</span>BREWING AS AN EXPERIENCE',text:"Known for an experiential approach to brewing. Come early, stay for the second cup."}],
  visit:{title:"Visit",address:"66 Keerom Street, Cape Town CBD",mapsQuery:"The 777 Coffee Roastery, 66 Keerom Street, Cape Town",chips:["<b>4.9</b> ★ · 525 reviews","Coffee roastery"],phone:""},
  social:{instagram:""},
  footerLinks:[["66 Keerom Street, Cape Town CBD","https://www.google.com/maps/search/?api=1&query=The+777+Coffee+Roastery+66+Keerom+Street+Cape+Town"]],
