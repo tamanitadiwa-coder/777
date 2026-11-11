@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- Built by TAMANY.TECH · https://tamany.tech
+     TEMPLATE: edit only the CONFIG block below to switch to a new customer's look, fonts and content. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="author" content="TAMANY.TECH">
+<title></title>
+<style>
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+body.loaded{animation:fadeIn 1s ease forwards}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+body.lock{overflow:hidden}
+.bg{position:fixed;inset:0;z-index:-2;background-size:cover;background-position:center;animation:kb 28s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.14) translate(-1.2%,-1%)}}
+.shade{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.4) 40%,rgba(0,0,0,.85))}
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 14px) 22px 14px;transition:background .4s}
+.nav.solid{background:rgba(0,0,0,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.logo{justify-self:start;font-family:var(--display);line-height:1}
+.burger{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:grid;place-content:center;transition:transform .3s,background .3s}
+.bi{display:grid;gap:5px}
+.b-square{border-radius:14px}
+.b-pill{width:auto;display:flex;align-items:center;gap:14px;padding:0 20px 0 22px;border-radius:999px}
+.b-pill .bl{font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+.b-pill .bi i{width:18px}
+.burger:hover{background:rgba(255,255,255,.2);transform:scale(1.06)}
+.burger i{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .4s cubic-bezier(.7,0,.2,1),opacity .3s}
+.burger.open i:nth-child(1){transform:translateY(7px) rotate(45deg)}.burger.open i:nth-child(2){opacity:0}.burger.open i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.ico{justify-self:end;width:44px;height:44px;display:grid;place-items:center;transition:transform .3s}.ico:hover{transform:scale(1.1) rotate(-6deg)}.ico svg{width:26px;height:26px}
+.menu{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:rgba(5,5,5,.6);backdrop-filter:blur(26px) saturate(1.4);-webkit-backdrop-filter:blur(26px) saturate(1.4);clip-path:circle(0 at var(--cx,50%) 56px);transition:clip-path .7s cubic-bezier(.7,0,.2,1);pointer-events:none}
+.menu.open{clip-path:circle(150% at var(--cx,50%) 56px);pointer-events:auto}
+.menu a{font-family:var(--display);font-size:clamp(34px,9vw,58px);padding:4px 18px;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s,color .3s}
+.menu.open a{opacity:1;transform:none}.menu a:hover{color:var(--accent)}
+.menu a small{font-family:var(--ui);font-size:12px;letter-spacing:.2em;color:var(--accent);margin-left:14px;vertical-align:middle}
+.mhead,.mfoot{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);opacity:0;transition:opacity .6s .35s}
+.mfoot{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 34px);text-align:center;color:var(--dim)}
+.menu.open .mhead,.menu.open .mfoot{opacity:1}
+/* layouts */
+.l-left .burger{justify-self:start}.l-left .logo{justify-self:center}
+.l-split{grid-template-columns:1fr auto}.rt{display:flex;align-items:center;gap:10px}
+/* menu: drawer */
+.mscrim{position:fixed;inset:0;z-index:39;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .5s}.mscrim.open{opacity:1;pointer-events:auto}
+.m-drawer{inset:0 auto 0 0;width:min(86vw,360px);align-items:flex-start;justify-content:flex-start;padding:110px 28px 40px;clip-path:none;transform:translateX(-104%);transition:transform .6s cubic-bezier(.7,0,.2,1);border-right:1px solid var(--line)}
+.m-drawer.open{clip-path:none;transform:none}
+.m-drawer.s-right{inset:0 0 0 auto;transform:translateX(104%);border-right:0;border-left:1px solid var(--line)}.m-drawer.s-right.open{transform:none}
+.m-drawer a{display:flex;justify-content:space-between;align-items:baseline;width:100%;padding:16px 0;border-bottom:1px solid var(--line);font-size:34px}
+.m-drawer a small{margin-left:0}.m-drawer .mfoot{text-align:left;left:28px}
+/* menu: fade */
+.m-fade{clip-path:none;opacity:0;transition:opacity .5s ease;align-items:flex-start;padding:0 9vw;gap:2px}.m-fade.open{clip-path:none;opacity:1}
+/* HERO + CARD */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px 80px}
+.eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin-bottom:14px;opacity:0;animation:rise 1s .2s forwards}
+.hero h1{font-family:var(--script);font-weight:400;font-size:clamp(40px,10vw,72px);margin:0 0 28px;text-shadow:0 4px 30px rgba(0,0,0,.5);opacity:0;transform:translateY(20px);animation:rise 1.1s .35s forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.card{width:min(100%,380px);border-radius:26px;position:relative;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.05));border:1px solid var(--line);backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.3);opacity:0;transform:translateY(40px) scale(.97);animation:rise 1.1s .6s forwards}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.2),transparent 60%)}
+.card-bar{display:flex;align-items:center;gap:12px;padding:16px 20px;border-radius:26px 26px 0 0;background:var(--bar);font-weight:600;font-size:18px;letter-spacing:.02em;text-align:left}
+.card-bar .gate-ico{width:34px;height:34px;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;flex:none}
+.card-bar svg{width:18px;height:18px}
+.card-body{padding:24px 22px 22px}
+.card h2{margin:0 0 18px;font-size:22px;font-weight:500}
+.fields{border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.field{position:relative}.field+.field{border-top:1px solid rgba(255,255,255,.16)}
+.sel{width:100%;display:flex;align-items:center;gap:14px;padding:18px;background:none;border:0;text-align:left;font-size:19px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.field:first-child .sel{border-radius:14px 14px 0 0}.sel:hover{background:rgba(255,255,255,.08)}
+.sel svg{width:24px;height:24px;flex:none}.sel .chev{margin-left:auto;width:16px;height:16px;transition:transform .35s}
+.field.open .chev{transform:rotate(180deg)}.field.open{z-index:30}
+.pop{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:20;max-height:250px;overflow:auto;padding:8px;border-radius:16px;background:rgba(24,22,20,.85);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,.5);opacity:0;transform:translateY(-8px) scale(.97);transform-origin:top;pointer-events:none;transition:opacity .25s,transform .3s cubic-bezier(.2,.7,.2,1)}
+.field.open .pop{opacity:1;transform:none;pointer-events:auto}
+.opt{display:block;width:100%;text-align:left;padding:12px 14px;border:0;border-radius:10px;background:none;font-size:17px}
+.opt:hover,.opt:focus-visible{background:rgba(255,255,255,.14)}.opt[aria-selected=true]{background:var(--accent-soft);color:var(--accent)}
+.cta{position:relative;overflow:hidden;width:100%;padding:19px;border:0;border-top:1px solid rgba(255,255,255,.2);border-radius:0 0 14px 14px;background:rgba(255,255,255,.12);font-size:19px;font-weight:500;text-shadow:0 1px 8px rgba(0,0,0,.45);transition:background .3s}
+.cta:hover{background:rgba(255,255,255,.22)}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.3);transform:scale(0);animation:rp .6s ease-out forwards;pointer-events:none}
+.btn .ripple{background:rgba(0,0,0,.15)}@keyframes rp{to{transform:scale(4);opacity:0}}
+/* TAMANY SECTIONS */
+.section{background:transparent;text-align:center;opacity:0;transform:translateY(60px);transition:all .6s ease;margin-top:110px}
+.section.visible{opacity:1;transform:none}
+.image-wrap{position:relative;overflow:hidden;aspect-ratio:16/9;background-size:cover;background-position:center}
+.image-wrap::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.3)}
+.image-wrap .ph{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.8);transform:scale(1.04);transition:transform 1.5s ease}
+.section.visible .ph{transform:scale(1)}
+.text-block{padding:60px 22px 10px;max-width:760px;margin:auto;line-height:1.8;text-align:left}
+.section-title{font-size:14px;font-weight:700;letter-spacing:.14em;margin-bottom:16px;color:#e0e0e0;text-transform:uppercase}
+.section-text{font-size:18px;color:#bdbdbd}
+.panel{max-width:760px;margin:110px auto 0;padding:0 22px}
+.panel>div{padding:42px 30px;border-radius:26px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(255,255,255,.22);line-height:1.8;opacity:0;transform:translateY(50px);transition:all .8s ease}
+.panel.visible>div{opacity:1;transform:none}
+.panel h3{margin:0 0 12px;font-family:var(--display);font-weight:500;font-size:32px}
+.panel p{margin:0 0 6px;font-size:18px;color:#bdbdbd}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 4px}
+.chip{border:1px solid #333;border-radius:14px;padding:12px 20px;background:rgba(255,255,255,.04);font-size:15px;letter-spacing:.02em;transition:.3s ease}
+.chip:hover{border-color:#888;background:rgba(255,255,255,.08);box-shadow:0 0 24px rgba(255,255,255,.08)}
+.chip b{color:var(--accent);font-weight:600}
+.footer{margin-top:110px;color:#ccc;padding:70px 20px calc(50px + env(safe-area-inset-bottom,0px));text-align:center;background:linear-gradient(transparent,rgba(0,0,0,.85) 30%)}
+.footer h2{color:#fff;letter-spacing:.12em;font-weight:500}
+.links{margin-top:30px;line-height:2.4;font-size:17px}.links div{cursor:pointer;transition:color .3s}.links div:hover{color:var(--accent)}
+.credit{display:inline-flex;align-items:center;gap:8px;margin-top:46px;padding:11px 20px;border-radius:999px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#ddd;transition:.3s}
+.credit b{letter-spacing:.2em;color:#fff}.credit:hover{border-color:#888;box-shadow:0 0 24px rgba(255,255,255,.1)}
+.small{margin-top:20px;font-size:13px;color:#777}
+/* MODAL */
+.scrim{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s}
+.scrim.open{opacity:1;pointer-events:auto}
+.modal{width:min(100%,420px);max-height:92vh;overflow:auto;padding:30px 24px 24px;border-radius:28px;position:relative;background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.06)),rgba(22,20,18,.65);border:1px solid var(--line);backdrop-filter:blur(30px) saturate(1.5);-webkit-backdrop-filter:blur(30px) saturate(1.5);box-shadow:0 40px 100px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.3);transform:translateY(50px) scale(.94);transition:transform .5s cubic-bezier(.2,.9,.25,1.15)}
+.scrim.open .modal{transform:none}
+.x{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--glass);font-size:20px;line-height:1}
+.modal h3{margin:0 0 6px;font-family:var(--display);font-weight:500;font-size:30px;padding-right:40px}
+.modal .sub{margin:0 0 22px;color:#aaa}
+.step{display:none}.step.on{display:block;animation:rise .5s ease both}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.slot{padding:14px 0;border-radius:14px;border:1px solid var(--line);background:var(--glass);font-size:17px;opacity:0;transform:translateY(12px);animation:rise .5s ease forwards;transition:background .25s,border-color .25s,transform .25s}
+.slot:hover:not(:disabled){background:var(--accent-soft);border-color:var(--accent);transform:translateY(-2px)}
+.slot:disabled{opacity:.28!important;text-decoration:line-through;cursor:not-allowed}.slot.want{border-color:var(--accent)}
+.load{display:flex;gap:8px;justify-content:center;padding:34px 0}.load i{width:10px;height:10px;border-radius:50%;background:var(--accent);animation:bn 1s infinite ease-in-out}
+.load i:nth-child(2){animation-delay:.15s}.load i:nth-child(3){animation-delay:.3s}@keyframes bn{0%,80%,100%{transform:scale(.5);opacity:.4}40%{transform:scale(1);opacity:1}}
+.form label{display:block;margin-bottom:14px;font-size:14px;color:#aaa}
+.form input{width:100%;margin-top:6px;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.12);color:#fff;font:inherit;font-size:17px}
+.form input:focus{outline:none;border-color:var(--accent);background:rgba(255,255,255,.18)}
+.form input.bad{border-color:#ff8a7a;animation:shake .4s}@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.btn{width:100%;padding:17px;border:0;border-radius:14px;background:#fff;color:#111;font-size:18px;font-weight:500;position:relative;overflow:hidden;transition:transform .25s}
+.btn:hover{transform:translateY(-2px)}.btn.ghost{background:var(--glass);color:#fff;border:1px solid var(--line);margin-top:10px}.btn.ghost .ripple{background:rgba(255,255,255,.3)}
+.back{background:none;border:0;color:#aaa;padding:0;margin-bottom:14px;font-size:15px}
+.ok{text-align:center}
+.pass{margin:6px 0 20px;text-align:left;border-radius:18px;overflow:hidden;background:rgba(255,255,255,.08);border:1px solid var(--line)}
+.pass-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--bar);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.pass-top svg{width:18px;height:18px}
+.pass-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 10px;padding:18px 16px}
+.pass-grid small{display:block;font-size:10px;letter-spacing:.2em;color:#999;margin-bottom:3px}.pass-grid b{font-size:18px;font-weight:600}
+.tear{border-top:2px dashed rgba(255,255,255,.25);position:relative;margin:0 0 0}
+.tear::before,.tear::after{content:"";position:absolute;top:-9px;width:16px;height:16px;border-radius:50%;background:#1b1917}.tear::before{left:-8px}.tear::after{right:-8px}
+.bars{height:46px;margin:14px 16px 16px;background:repeating-linear-gradient(90deg,#fff 0 2px,transparent 2px 5px,#fff 5px 6px,transparent 6px 10px,#fff 10px 13px,transparent 13px 16px);opacity:.85;border-radius:3px}
+.okc{width:70px;height:70px;margin:2px auto 10px;display:block}.okc circle,.okc path{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.okc circle{stroke-dasharray:190;stroke-dashoffset:190;animation:dr .8s .1s ease forwards}.okc path{stroke-dasharray:50;stroke-dashoffset:50;animation:dr .5s .8s ease forwards}@keyframes dr{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.bg{animation:none}}
+</style>
+<style id="client-css"></style>
+</head>
+<body>
+<div class="bg" id="bg"></div><div class="shade"></div>
+<div id="app"></div>
+
+<script>
+/* =====================================================================
+   CONFIG  —  swap this block for each customer. Nothing else needs editing.
+   ===================================================================== */
+const CONFIG = {
+ brand:{name:"777 Coffee Roastery",title:"The 777 Coffee Roastery · Cape Town",footerName:"THE 777 COFFEE ROASTERY",
+  logoHTML:'<span class="g777">777</span><span class="g777s">COFFEE SHOP</span>'},
+ fonts:{display:'"Barlow Condensed","Arial Narrow",sans-serif',ui:'"Barlow",-apple-system,"Segoe UI",Roboto,sans-serif',script:'"Nothing You Could Do","Segoe Script",cursive',
+  google:['Barlow+Condensed:ital,wght@0,500;0,700;1,800','Barlow:wght@300;400;500;600','Nothing+You+Could+Do']},
+ colors:{bg:"#08080a",ink:"#ffffff",dim:"rgba(255,255,255,.55)",line:"rgba(255,255,255,.2)",glass:"rgba(255,255,255,.08)",accent:"#f3b73f","accent-soft":"rgba(243,183,63,.22)",bar:"#3c4ad6"},
+ css:`.g777{display:block;font-family:"Barlow Condensed",sans-serif;font-style:italic;font-weight:800;font-size:38px;letter-spacing:-.01em;background:linear-gradient(180deg,#ffe49a,#eba72a 58%,#b87618);-webkit-background-clip:text;background-clip:text;color:transparent;border-bottom:2px solid #eba72a;padding:0 6px 1px 2px}
+ .g777s{display:block;margin-top:3px;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:9px;letter-spacing:.24em;color:#f3b73f}
+ .card-bar{text-transform:none;font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:700}`,
+ hero:{bg:"bg.jpg",fallback:"radial-gradient(circle at 70% 20%,#3a3f8a,#12121e 45%,#08080a 85%)",eyebrow:"Cape Town CBD · Specialty coffee roastery",headline:"Reserve your seat"},
+ nav:{layout:"left",burger:"square",menu:"drawer",side:"left",head:"Departures",foot:"66 Keerom Street · Cape Town CBD"},
+ menu:[["Reserve","#top","B1"],["The roastery","#roastery","A2"],["Visit","#visit","C3"]],
+ reserve:{header:"Boarding Gate B1",ticket:true,gate:"B1",open:420,close:1020,defaultTime:600,maxGuests:10,
+  labels:{title:"Check in for coffee",cta:"Find a Seat",loading:"Checking the gate",slotsTitle:"Choose your departure",formTitle:"Passenger details",confirm:"Confirm boarding",okTitle:"You're cleared to board",passLabel:"BOARDING PASS",gateLabel:"GATE"}},
+ sections:[
+  {id:"roastery",img:"s1.jpg",fallback:"linear-gradient(160deg,#4a3b2a,#0b0a09)",title:"AVIATION-THEMED COFFEE",text:"A specialty coffee shop and roastery in the Cape Town CBD, designed around the feeling of the departures hall."},
+  {img:"s2.jpg",fallback:"linear-gradient(160deg,#2f3578,#0b0b14)",title:"ROASTED AT THE SOURCE",text:"Coffee roasted by the team behind the counter, so what you drink is as fresh as it gets."},
+  {img:"s3.jpg",fallback:"linear-gradient(160deg,#6b4a1f,#0c0a07)",title:"BREWING AS AN EXPERIENCE",text:"Known for an experiential approach to brewing. Come early, stay for the second cup."}],
+ visit:{title:"Visit",address:"66 Keerom Street, Cape Town CBD",mapsQuery:"The 777 Coffee Roastery, 66 Keerom Street, Cape Town",chips:["<b>4.9</b> ★ · 525 reviews","Coffee roastery"],phone:""},
+ social:{instagram:""},
+ footerLinks:[["66 Keerom Street, Cape Town CBD","https://www.google.com/maps/search/?api=1&query=The+777+Coffee+Roastery+66+Keerom+Street+Cape+Town"]],
+ credit:{text:"Website by",name:"TAMANY",url:"https://tamany.tech"}
+};
+/* ===================================================================== */
+
+const C=CONFIG,$=s=>document.querySelector(s),root=document.documentElement.style;
+document.title=C.brand.title;
+Object.entries(C.colors).forEach(([k,v])=>root.setProperty('--'+k,v));
+Object.entries(C.fonts).filter(([k])=>k!=='google').forEach(([k,v])=>root.setProperty('--'+k,v));
+if(C.fonts.google){const l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?'+C.fonts.google.map(f=>'family='+f).join('&')+'&display=swap';document.head.appendChild(l)}
+$('#client-css').textContent=C.css||'';
+$('#bg').style.backgroundImage=`url("${C.hero.bg}"),${C.hero.fallback}`;
+
+const I={
+ date:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>',
+ time:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+ size:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>',
+ chev:'<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5l5 5 5-5"/></svg>',
+ ig:'<svg viewBox="0 0 24 24" fill="#fff"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.2-3.2a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"/></svg>',
+ pin:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+ plane:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5L21 16Z"/></svg>'
+};
+const maps='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(C.visit.mapsQuery);
+const R=C.reserve,L=R.labels,S=C.social||{};
+const rightIcon=S.instagram?`<a class="ico" href="${S.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${I.ig}</a>`:`<a class="ico" href="${maps}" target="_blank" rel="noopener" aria-label="Directions">${I.pin}</a>`;
+
+const N=Object.assign({layout:'center',burger:'round',menu:'circle',side:'left',label:'Menu',head:'',foot:''},C.nav||{});
+const bu=`<button class="burger b-${N.burger}" id="burger" aria-label="Menu" aria-expanded="false">${N.burger==='pill'?`<span class="bl">${N.label}</span>`:''}<span class="bi"><i></i><i></i><i></i></span></button>`;
+const logo=`<a class="logo" href="#top" aria-label="${C.brand.name}">${C.brand.logoHTML}</a>`;
+const cx={center:'50%',left:'46px',split:'calc(100% - 46px)'}[N.layout];
+$('#app').innerHTML=`
+<header class="nav l-${N.layout}" id="nav">${N.layout==='left'?bu+logo+rightIcon:N.layout==='split'?logo+`<div class="rt">${rightIcon}${bu}</div>`:logo+bu+rightIcon}</header>
+${N.menu==='drawer'?'<div class="mscrim" id="mscrim"></div>':''}
+<nav class="menu m-${N.menu} s-${N.side}" id="menu" style="--cx:${cx}">${N.head?`<div class="mhead">${N.head}</div>`:''}${C.menu.map(m=>`<a href="${m[1]}">${m[0]}${m[2]?`<small>${m[2]}</small>`:''}</a>`).join('')}${N.foot?`<div class="mfoot">${N.foot}</div>`:''}</nav>
+<main id="top">
+<section class="hero">
+ <div class="eyebrow">${C.hero.eyebrow}</div><h1>${C.hero.headline}</h1>
+ <div class="card" id="card">
+  ${R.header?`<div class="card-bar"><span class="gate-ico">${I.plane}</span>${R.header}</div>`:''}
+  <div class="card-body"><h2>${L.title}</h2>
+   <div class="fields"><div class="field" id="f-date"></div><div class="field" id="f-time"></div><div class="field" id="f-size"></div><button class="cta" id="find">${L.cta}</button></div>
+  </div>
+ </div>
+</section>
+${C.sections.map(s=>`<section class="section" id="${s.id||''}"><div class="image-wrap"><div class="ph" style="background-image:url('${s.img}'),${s.fallback}"></div></div><div class="text-block"><div class="section-title">${s.title}</div><div class="section-text">${s.text}</div></div></section>`).join('')}
+<section class="panel" id="visit"><div><h3>${C.visit.title}</h3><p>${C.visit.address}</p>
+ <div class="chips">${C.visit.chips.map(c=>`<span class="chip">${c}</span>`).join('')}<a class="chip" href="${maps}" target="_blank" rel="noopener">Get directions →</a>${C.visit.phone?`<a class="chip" href="tel:${C.visit.phone.replace(/\s/g,'')}">Call</a>`:''}</div>
+</div></section>
+</main>
+<footer class="footer"><h2>${C.brand.footerName}</h2>
+ <div class="links">${(C.footerLinks||[]).map(l=>`<div onclick="window.open('${l[1]}','_blank')">${l[0]}</div>`).join('')}</div>
+ <a class="credit" href="${C.credit.url}" target="_blank" rel="noopener">${C.credit.text} <b>${C.credit.name}</b></a>
+ <div class="small">© 2026 ${C.brand.footerName}</div></footer>
+<div class="scrim" id="scrim" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+ <button class="x" id="close" aria-label="Close">×</button>
+ <div class="step" id="s-load"><h3 id="mt">${L.loading}</h3><p class="sub" id="load-sub"></p><div class="load"><i></i><i></i><i></i></div></div>
+ <div class="step" id="s-slots"><h3>${L.slotsTitle}</h3><p class="sub" id="slot-sub"></p><div class="slots" id="slots"></div></div>
+ <div class="step" id="s-form"><button class="back" id="back">← Change time</button><h3>${L.formTitle}</h3><p class="sub" id="form-sub"></p>
+  <form class="form" id="form" novalidate><label>Name<input id="in-name" autocomplete="name" placeholder="Full name"></label><label>Phone<input id="in-phone" type="tel" autocomplete="tel" placeholder="+27 …"></label><button class="btn" type="submit">${L.confirm}</button></form></div>
+ <div class="step ok" id="s-ok"><svg class="okc" viewBox="0 0 84 84"><circle cx="42" cy="42" r="30"/><path d="M29 43l9 9 18-20"/></svg><h3 style="padding:0;margin-bottom:14px">${L.okTitle}</h3><div id="sum"></div><button class="btn" id="ics">Add to calendar</button><button class="btn ghost" id="done">Done</button></div>
+</div></div>`;
+
+/* ---------- behaviour ---------- */
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const fmtDate=d=>`${MON[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+const fmtTime=m=>{const h=Math.floor(m/60),mm=m%60;return `${((h+11)%12)+1}:${String(mm).padStart(2,'0')} ${h<12?'AM':'PM'}`};
+const today=new Date();today.setHours(0,0,0,0);
+const dates=[...Array(30)].map((_,i)=>{const d=new Date(today);d.setDate(d.getDate()+i);return d});
+const times=[];for(let m=R.open;m<=R.close-30;m+=30)times.push(m);
+const sizes=[...Array(R.maxGuests||12)].map((_,i)=>i+1);
+const nowMin=()=>{const n=new Date();return n.getHours()*60+n.getMinutes()};
+const st={date:0,time:times.find(t=>t>=R.defaultTime)??times[0],size:2};
+const dLabel=(d,i)=>i===0?'Today':i===1?'Tomorrow':`${DOW[d.getDay()]}, ${MON[d.getMonth()]} ${d.getDate()}`;
+const who=()=>st.size===1?'1 person':st.size+' people';
+const F={
+ date:{el:$('#f-date'),ic:I.date,items:()=>dates.map((d,i)=>({v:i,l:dLabel(d,i)})),show:()=>fmtDate(dates[st.date])},
+ time:{el:$('#f-time'),ic:I.time,items:()=>times.map(t=>({v:t,l:fmtTime(t)})),show:()=>fmtTime(st.time)},
+ size:{el:$('#f-size'),ic:I.size,items:()=>sizes.map(n=>({v:n,l:n===1?'1 person':n+' people'})),show:who}};
+function closeAll(){Object.values(F).forEach(f=>{f.el.classList.remove('open');f.el.querySelector('.sel').setAttribute('aria-expanded','false')})}
+Object.entries(F).forEach(([k,f])=>{
+ f.el.innerHTML=`<button class="sel" aria-haspopup="listbox" aria-expanded="false">${f.ic}<span></span>${I.chev}</button><div class="pop" role="listbox"></div>`;
+ const b=f.el.querySelector('.sel'),p=f.el.querySelector('.pop');
+ f.render=()=>{b.querySelector('span').textContent=f.show();p.innerHTML=f.items().map(o=>`<button class="opt" role="option" aria-selected="${o.v===st[k]}" data-v="${o.v}">${o.l}</button>`).join('')};f.render();
+ b.onclick=e=>{e.stopPropagation();const was=f.el.classList.contains('open');closeAll();if(!was){f.el.classList.add('open');b.setAttribute('aria-expanded','true');const s=p.querySelector('[aria-selected=true]');if(s)p.scrollTop=s.offsetTop-70}};
+ p.onclick=e=>{const o=e.target.closest('.opt');if(!o)return;st[k]=+o.dataset.v;f.render();closeAll()}});
+document.addEventListener('click',closeAll);
+document.addEventListener('pointerdown',e=>{const b=e.target.closest('.cta,.btn');if(!b)return;const r=b.getBoundingClientRect(),s=Math.max(r.width,r.height)/4,i=document.createElement('span');i.className='ripple';i.style.cssText=`width:${s}px;height:${s}px;left:${e.clientX-r.left-s/2}px;top:${e.clientY-r.top-s/2}px`;b.appendChild(i);setTimeout(()=>i.remove(),650)});
+const burger=$('#burger'),menu=$('#menu');
+function setMenu(on){menu.classList.toggle('open',on);burger.classList.toggle('open',on);burger.setAttribute('aria-expanded',on);document.body.classList.toggle('lock',on);const ms=$('#mscrim');if(ms)ms.classList.toggle('open',on);const bl=burger.querySelector('.bl');if(bl)bl.textContent=on?'Close':N.label}
+if($('#mscrim'))$('#mscrim').onclick=()=>setMenu(false);
+burger.onclick=()=>setMenu(!menu.classList.contains('open'));menu.querySelectorAll('a').forEach((a,i)=>{a.style.transitionDelay=(.25+i*.07)+'s';a.onclick=()=>setMenu(false)});
+addEventListener('scroll',()=>$('#nav').classList.toggle('solid',scrollY>innerHeight*.5),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.15});
+document.querySelectorAll('.section,.panel').forEach(s=>io.observe(s));
+$('#card').addEventListener('pointermove',e=>{const r=e.currentTarget.getBoundingClientRect();e.currentTarget.style.setProperty('--mx',(e.clientX-r.left)+'px');e.currentTarget.style.setProperty('--my',(e.clientY-r.top)+'px')});
+
+/* demo availability: replace slotsFor() with a real booking API when the customer goes live */
+const hash=s=>{let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return(h>>>0)/4294967295};
+function slotsFor(){const d=dates[st.date],out=[];for(let t=st.time-90;t<=st.time+90;t+=30){if(t<R.open||t>R.close-30)continue;if(st.date===0&&t<=nowMin())continue;out.push({t,ok:hash(d.toDateString()+t+st.size)>.25+st.size*.02})}return out}
+const scrim=$('#scrim');let chosen=null,name='';
+const step=id=>document.querySelectorAll('.step').forEach(s=>s.classList.toggle('on',s.id===id));
+const longDate=()=>{const d=dates[st.date];return `${DOW[d.getDay()]}, ${MON[d.getMonth()]} ${d.getDate()}`};
+const openM=()=>{scrim.classList.add('open');scrim.setAttribute('aria-hidden','false');document.body.classList.add('lock')};
+const closeM=()=>{scrim.classList.remove('open');scrim.setAttribute('aria-hidden','true');if(!menu.classList.contains('open'))document.body.classList.remove('lock')};
+$('#close').onclick=closeM;$('#done').onclick=closeM;scrim.onclick=e=>{if(e.target===scrim)closeM()};
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeAll();closeM();setMenu(false)}});
+$('#find').onclick=e=>{e.stopPropagation();closeAll();$('#load-sub').textContent=`${longDate()} · ${who()}`;step('s-load');openM();
+ setTimeout(()=>{const l=slotsFor();if(!l.some(s=>s.ok)){$('#slot-sub').textContent=`Nothing near ${fmtTime(st.time)} on ${longDate()}. Try another time or day.`;$('#slots').innerHTML='';step('s-slots');return}
+  $('#slot-sub').textContent=`${longDate()} · ${who()}`;
+  $('#slots').innerHTML=l.map((s,i)=>`<button class="slot ${s.t===st.time?'want':''}" style="animation-delay:${i*.06}s" data-t="${s.t}" ${s.ok?'':'disabled'}>${fmtTime(s.t)}</button>`).join('');step('s-slots')},1100)};
+$('#slots').onclick=e=>{const b=e.target.closest('.slot');if(!b||b.disabled)return;chosen=+b.dataset.t;$('#form-sub').textContent=`${longDate()} at ${fmtTime(chosen)} · ${who()}`;step('s-form');setTimeout(()=>$('#in-name').focus(),300)};
+$('#back').onclick=()=>step('s-slots');
+$('#form').onsubmit=e=>{e.preventDefault();const n=$('#in-name'),p=$('#in-phone');let bad=false;[n,p].forEach(i=>i.classList.remove('bad'));
+ if(n.value.trim().length<2){n.classList.add('bad');bad=true}if(p.value.replace(/\D/g,'').length<7){p.classList.add('bad');bad=true}if(bad)return;
+ name=n.value.trim();
+ $('#sum').innerHTML=R.ticket?`<div class="pass"><div class="pass-top"><span>${C.brand.name} · ${L.passLabel}</span>${I.plane}</div><div class="pass-grid"><div><small>PASSENGER</small><b>${name}</b></div><div><small>${L.gateLabel}</small><b>${R.gate}</b></div><div><small>DATE</small><b>${longDate()}</b></div><div><small>TIME</small><b>${fmtTime(chosen)}</b></div><div><small>SEATS</small><b>${who()}</b></div></div><div class="tear"></div><div class="bars"></div></div>`
+  :`<p style="line-height:1.8;margin:0 0 20px"><b>${name}</b><br>${longDate()} at ${fmtTime(chosen)}<br>${who()} · ${C.brand.name}</p>`;
+ step('s-ok')};
+$('#ics').onclick=()=>{const d=new Date(dates[st.date]);d.setHours(0,chosen,0,0);const e=new Date(d.getTime()+90*6e4);
+ const f=x=>x.getFullYear()+String(x.getMonth()+1).padStart(2,'0')+String(x.getDate()).padStart(2,'0')+'T'+String(x.getHours()).padStart(2,'0')+String(x.getMinutes()).padStart(2,'0')+'00';
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${C.brand.name} (${who()})\nDTSTART:${f(d)}\nDTEND:${f(e)}\nEND:VEVENT\nEND:VCALENDAR`],{type:'text/calendar'}));a.download='reservation.ics';a.click()};
+document.body.classList.add('loaded');
+console.log('%cWebsite by TAMANY.TECH','font-weight:700;letter-spacing:.1em');
+</script>
+</body>
+</html>
