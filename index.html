@@ -163,7 +163,49 @@ const CONFIG = {
  .mhead{align-self:stretch;display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:14px;background:var(--bar);color:#fff;font-family:"Barlow Condensed",sans-serif;font-size:20px;font-weight:700;letter-spacing:.08em;text-transform:none;margin-bottom:12px}
  .m-drawer a:first-of-type small::before{content:"";display:inline-block;width:7px;height:7px;margin-right:8px;border-radius:50%;background:#58d68d;animation:blink 1.6s infinite}
  @keyframes blink{50%{opacity:.25}}
- .gt{display:block;margin-bottom:8px;color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.3em}`,
+ .gt{display:block;margin-bottom:8px;color:var(--accent);font-size:12px;font-weight:600;letter-spacing:.3em}
+ /* compact boarding-ticket booking card */
+ .card.tk{width:min(100%,330px);border-radius:16px;text-align:left}
+ .tk-top{display:flex;align-items:center;gap:9px;padding:10px 14px;border-radius:15px 15px 0 0;background:var(--bar);font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:17px;letter-spacing:.1em;text-transform:uppercase}
+ .tk-top svg{width:17px;height:17px;flex:none}
+ .tk-top em{margin-left:auto;font-style:normal;font-size:11px;font-weight:600;letter-spacing:.22em;opacity:.75}
+ .tk-body{padding:14px 14px 16px}
+ .tk-title{margin:0 0 10px;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--dim)}
+ .tk-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;border:0;background:none;box-shadow:none;border-radius:0}
+ .tk-fields .field{border:1px solid rgba(255,255,255,.2);border-radius:11px;background:rgba(255,255,255,.07)}
+ .tk-fields .field+.field{border-top:1px solid rgba(255,255,255,.2)}
+ .tk-fields #f-date{grid-column:1/-1}
+ .tk-fields .sel{padding:11px 12px;gap:10px;font-size:15px;border-radius:11px}
+ .tk-fields .field:first-child .sel{border-radius:11px}
+ .tk-fields .sel svg{width:17px;height:17px}.tk-fields .sel .chev{width:12px;height:12px}
+ .tk-fields .pop{min-width:170px}.tk-fields #f-size .pop{left:auto;right:0}
+ .tk-fields .opt{padding:10px 12px;font-size:15px}
+ .tk-tear{position:relative;margin:0 14px;border-top:2px dashed rgba(255,255,255,.28)}
+ .tk-tear::before,.tk-tear::after{content:"";position:absolute;top:-9px;width:16px;height:16px;border-radius:50%;background:#0b0b10}
+ .tk-tear::before{left:-22px;clip-path:inset(0 0 0 50%)}.tk-tear::after{right:-22px;clip-path:inset(0 50% 0 0)}
+ .tk-stub{padding:14px}
+ .tk-stub .cta{padding:13px;border:0;border-radius:11px;background:var(--accent);color:#111;font-family:"Barlow Condensed",sans-serif;font-size:20px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-shadow:none}
+ .tk-stub .cta:hover{background:#ffc94f}
+ .tk-stub .ripple{background:rgba(0,0,0,.18)}
+ .tk-bars{height:26px;margin:12px 0 0;opacity:.5}
+ /* low-exposure photo behind everything */
+ .bg{filter:brightness(.5) contrast(1.05) saturate(.85)}
+ .shade{background:radial-gradient(ellipse at 50% 38%,rgba(0,0,0,.05),rgba(0,0,0,.55) 75%),linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.3) 40%,rgba(0,0,0,.88))}
+ /* glass ticket lifts off the photo */
+ .card.tk{background:linear-gradient(145deg,rgba(255,255,255,.2),rgba(255,255,255,.07)),rgba(10,10,16,.35);border:1px solid rgba(255,255,255,.28);box-shadow:0 2px 0 rgba(255,255,255,.12) inset,0 18px 30px -8px rgba(0,0,0,.6),0 45px 90px -10px rgba(0,0,0,.85),0 0 60px rgba(60,74,214,.18)}
+ .card.tk::after{content:"";position:absolute;left:8%;right:8%;bottom:-26px;height:28px;border-radius:50%;background:rgba(0,0,0,.55);filter:blur(18px);z-index:-1;pointer-events:none}
+ .tk-fields .field{box-shadow:0 6px 14px -4px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.18)}
+ .tk-stub .cta{box-shadow:0 8px 20px -4px rgba(243,183,63,.45),0 4px 10px rgba(0,0,0,.4)}
+ /* words that stand out */
+ .eyebrow{color:rgba(255,255,255,.8);text-shadow:0 2px 14px rgba(0,0,0,.9),0 0 3px rgba(0,0,0,.6)}
+ .hero h1{text-shadow:0 3px 6px rgba(0,0,0,.6),0 8px 36px rgba(0,0,0,.85)}
+ .tk-top{text-shadow:0 1px 6px rgba(0,0,0,.45)}
+ .tk-title{color:rgba(255,255,255,.75);text-shadow:0 1px 8px rgba(0,0,0,.8)}
+ .tk-fields .sel{text-shadow:0 1px 6px rgba(0,0,0,.75)}
+ .section-title{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+ .section-text{color:#d6d6d6;text-shadow:0 1px 10px rgba(0,0,0,.85)}
+ .panel h3,.panel p,.footer h2,.links{text-shadow:0 2px 12px rgba(0,0,0,.8)}
+ .panel p{color:#d0d0d0}`,
  hero:{bg:"bg.jpg",fallback:"radial-gradient(circle at 70% 20%,#3a3f8a,#12121e 45%,#08080a 85%)",eyebrow:"Cape Town CBD &nbsp;✈&nbsp; Specialty coffee roastery",headline:"Reserve your seat"},
  nav:{layout:"left",burger:"pill",label:"Gates",menu:"drawer",side:"left",head:'<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5L21 16Z"/></svg> Departures',foot:"66 Keerom Street · Cape Town CBD"},
  menu:[["Reserve","#top","B1"],["The roastery","#roastery","A2"],["Visit","#visit","C3"]],
@@ -212,11 +254,13 @@ ${N.menu==='drawer'?'<div class="mscrim" id="mscrim"></div>':''}
 <main id="top">
 <section class="hero">
  <div class="eyebrow">${C.hero.eyebrow}</div><h1>${C.hero.headline}</h1>
- <div class="card" id="card">
-  ${R.header?`<div class="card-bar"><span class="gate-ico">${I.plane}</span>${R.header}</div>`:''}
-  <div class="card-body"><h2>${L.title}</h2>
-   <div class="fields"><div class="field" id="f-date"></div><div class="field" id="f-time"></div><div class="field" id="f-size"></div><button class="cta" id="find">${L.cta}</button></div>
+ <div class="card tk" id="card">
+  <div class="tk-top">${I.plane}<span>${R.header||L.passLabel}</span><em>${L.passLabel}</em></div>
+  <div class="tk-body"><div class="tk-title">${L.title}</div>
+   <div class="fields tk-fields"><div class="field" id="f-date"></div><div class="field" id="f-time"></div><div class="field" id="f-size"></div></div>
   </div>
+  <div class="tk-tear"></div>
+  <div class="tk-stub"><button class="cta" id="find">${L.cta}</button><div class="bars tk-bars"></div></div>
  </div>
 </section>
 ${C.sections.map(s=>`<section class="section" id="${s.id||''}"><div class="image-wrap"><div class="ph" style="background-image:url('${s.img}'),${s.fallback}"></div></div><div class="text-block"><div class="section-title">${s.title}</div><div class="section-text">${s.text}</div></div></section>`).join('')}
